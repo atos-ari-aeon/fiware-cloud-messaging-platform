@@ -16,12 +16,6 @@ $ git clone -b docker git@github.com:atos-ari-aeon/fiware-cloud-messaging-api.gi
 $ git clone -b docker git@github.com:atos-ari-aeon/fiware-cloud-messaging-events-manager.git
 ```
 
-Navigate to the platform folder:
-
-```bash
-$ cd docker/
-```
-
 Edit the docker-compose.yml file. Add your ip in the field "docker_host":
 
 ```bash
