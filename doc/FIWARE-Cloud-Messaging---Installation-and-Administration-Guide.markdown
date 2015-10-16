@@ -1,6 +1,6 @@
 # AEON platform (Cloud Messaging GE) installation and configuration
 
-To get a wider information about aeon, please, go to the [README.md](index.md) file.
+To get a wider information about aeon, please, go to the [README.md](index.markdown) file.
 
 ## Requires:
 
