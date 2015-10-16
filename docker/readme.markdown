@@ -60,4 +60,5 @@ mongo:
 Run the script file:
 
 ```bash
-$ ./deploy_aeon.sh 
+$ ./deploy_aeon.sh
+```
