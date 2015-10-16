@@ -1,7 +1,7 @@
  mongo:
   #image: aeon/mongodb
   container_name: "mongo"
-  build: ../src/platform/env/mongodb
+  build: env/mongodb
   ports:
   - "27017:27017"
  rabbitmq:
@@ -13,7 +13,7 @@
  events:
   container_name: "events"
   #image: aeon/eventsmanager
-  build: ../src/platform/events-manager
+  build: ./aeon-events-manager
   ports:
    - "7789:7789"
   links:
@@ -22,13 +22,13 @@
  dashboard:
   container_name: "dashboard"
   #image: aeon/dashboard
-  build: ../src/platform/frontend
+  build: ./aeon-dashboard
   ports:
    - "8080:8000"
  rest:
   container_name: "rest"
   #image: aeon/backend
-  build: ../src/platform/rest
+  build: ./aeon-api
   ports:
    - "3000:3000"
   links:
