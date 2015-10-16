@@ -13,7 +13,7 @@
  events:
   container_name: "events"
   #image: aeon/eventsmanager
-  build: ./aeon-events-manager
+  build: ./fiware-cloud-messaging-events-manager
   ports:
    - "7789:7789"
   links:
@@ -22,13 +22,13 @@
  dashboard:
   container_name: "dashboard"
   #image: aeon/dashboard
-  build: ./aeon-dashboard
+  build: ./fiware-cloud-messaging-dashboard
   ports:
    - "8080:8000"
  rest:
   container_name: "rest"
   #image: aeon/backend
-  build: ./aeon-api
+  build: ./fiware-cloud-messaging-api
   ports:
    - "3000:3000"
   links:
