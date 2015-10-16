@@ -2,24 +2,32 @@
 
 It is possible to deploy the Cloud Messaging GE using Docker. Here you have the steps:
 
-Download the Cloud Messaging GE from the repo:
+Download the Docker files from the repo:
 
 ```bash
-$ git clone -b docker git@gitlab.atosresearch.eu:ari/aeon-platform.git
+$ git clone git@github.com:atos-ari-aeon/fiware-cloud-messaging-platform.git
+```
+
+Download the Cloud Messaging GE from the repos:
+
+```bash
+$ git clone -b docker git@github.com:atos-ari-aeon/fiware-cloud-messaging-dashboard.git
+$ git clone -b docker git@github.com:atos-ari-aeon/fiware-cloud-messaging-api.git
+$ git clone -b docker git@github.com:atos-ari-aeon/fiware-cloud-messaging-events-manager.git
 ```
 
 Navigate to the platform folder:
 
 ```bash
-$ cd $(pwd)/aeon-platform/docker
+$ cd docker/
 ```
 
-Edit the docker-compose.yuml file. Add your ip in the field "docker_host":
+Edit the docker-compose.yml file. Add your ip in the field "docker_host":
 
 ```bash
 mongo:
   container_name: "mongo"
-  build: ../src/platform/env/mongodb
+  build: env/mongodb
   ports:
   - "27017:27017"
  rabbitmq:
@@ -30,7 +38,7 @@ mongo:
    - "15672:15672"
  events:
   container_name: "events"
-  build: ../src/platform/events-manager
+  build: ./aeon-events-manager
   ports:
    - "7789:7789"
   links:
@@ -38,12 +46,12 @@ mongo:
    - rabbitmq
  dashboard:
   container_name: "dashboard"
-  build: ../src/platform/frontend
+  build: ./aeon-dashboard
   ports:
    - "8080:8000"
  rest:
   container_name: "rest"
-  build: ../src/platform/rest
+  build: ./aeon-api
   ports:
    - "3000:3000"
   links:
@@ -55,8 +63,7 @@ mongo:
    - "docker_host: <YOUR_IP>"
 ```
 
-Run the docker-compose.yuml file:
+Run the script file:
 
 ```bash
-$ docker-compose -p aeon up 
-```
+$ ./deploy_aeon.sh 
