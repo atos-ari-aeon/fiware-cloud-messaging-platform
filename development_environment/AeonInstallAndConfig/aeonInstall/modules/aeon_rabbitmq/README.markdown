@@ -1,0 +1,3 @@
+# aeon_rabitmq #
+
+This is the aeon_rabitmq module. It provides...

@@ -1,0 +1,1 @@
+include aeon_rabbitmq
