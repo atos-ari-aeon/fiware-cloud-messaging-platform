@@ -5,15 +5,15 @@ It is possible to deploy the Cloud Messaging GE using Docker. Here you have the 
 Download the Docker files from the repo:
 
 ```bash
-$ git clone git@github.com:atos-ari-aeon/fiware-cloud-messaging-platform.git
+$ git clone https://github.com/atos-ari-aeon/fiware-cloud-messaging-platform.git
 ```
 
 Download the Cloud Messaging GE from the repos:
 
 ```bash
-$ git clone -b docker git@github.com:atos-ari-aeon/fiware-cloud-messaging-dashboard.git
-$ git clone -b docker git@github.com:atos-ari-aeon/fiware-cloud-messaging-api.git
-$ git clone -b docker git@github.com:atos-ari-aeon/fiware-cloud-messaging-events-manager.git
+$ git clone -b docker https://github.com/atos-ari-aeon/fiware-cloud-messaging-dashboard.git
+$ git clone -b docker https://github.com/atos-ari-aeon/fiware-cloud-messaging-api.git
+$ git clone -b docker https://github.com/atos-ari-aeon/fiware-cloud-messaging-events-manager.git
 ```
 
 Edit the docker-compose.yml file. Add your ip in the field "docker_host":
