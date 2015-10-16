@@ -219,7 +219,7 @@ Run the script file:
 
 ```bash
 $ ./deploy_aeon.sh 
-``
+```
 
 ## Sanity Check Procedures
 
