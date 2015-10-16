@@ -1,3 +1,0 @@
-# aeon_conf #
-
-This is the aeon_conf module. It provides...

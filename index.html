@@ -1,0 +1,5265 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AEON API</title>
+    <link href="css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/idea.css">
+    <script src="js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/toc-resize.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/api-specification.css"> 
+    
+
+
+    
+</head>
+<body id="respecDocument" class="h-entry">
+<div class="container">
+
+
+  <div id="TOC-container">
+    
+<div id="fiware-logo-container">
+    <div id="fiware-logo"></div>
+</div>
+<nav id="toc">
+
+        
+    <ul class="toc">
+
+        
+	        
+        
+	        
+        
+
+
+<li><a href="#api-summary">API Summary</a></li>
+
+
+    
+    
+
+
+
+
+
+
+
+<li><a href="#API_specification">API Specification</a>
+    <ul class="toc">
+    
+
+                        <li>
+                            
+                                <a href="#default_group" title = "Group default">Default</a>
+                            
+                            <ul class="toc">
+                              
+                                
+                                    
+                                        
+                                            <li><a href="#action_login" title = "POST - Login">POST - Login</a></li>
+                                        
+                                        
+                                    
+                                
+                              
+                                
+                                    
+                                        
+                                            <li><a href="#action_logout" title = "GET - Logout">GET - Logout</a></li>
+                                        
+                                        
+                                    
+                                
+                              
+                                
+                                    <li>
+                                        <a href="#resource_users" title = "Resource Users">Resource Users</a>
+                                        <ul class="toc  ">
+                                        
+                                            
+                                                <li><a href="#action_list-all-users" title ="GET - List All Users">GET - List All Users</a></li>
+                                            
+
+                                        
+                                            
+                                                <li><a href="#action_create-user" title ="POST - Create User">POST - Create User</a></li>
+                                            
+
+                                        
+                                        </ul>
+                                    </li>
+                                
+                              
+                                
+                                    
+                                        
+                                            <li><a href="#action_user-info" title = "GET - User info">GET - User info</a></li>
+                                        
+                                        
+                                    
+                                
+                              
+                                
+                                    <li>
+                                        <a href="#resource_user-collection" title = "Resource User Collection">Resource User Collection</a>
+                                        <ul class="toc  ">
+                                        
+                                            
+                                                <li><a href="#action_get-user" title ="GET - Get user">GET - Get user</a></li>
+                                            
+
+                                        
+                                            
+                                                <li><a href="#action_delete-user" title ="DELETE - Delete User">DELETE - Delete User</a></li>
+                                            
+
+                                        
+                                        </ul>
+                                    </li>
+                                
+                              
+                                
+                                    <li>
+                                        <a href="#resource_update-user" title = "Resource Update User">Resource Update User</a>
+                                        <ul class="toc  ">
+                                        
+                                            
+                                                <li><a href="#action_update-user-password" title ="PUT - Update User Password">PUT - Update User Password</a></li>
+                                            
+
+                                        
+                                        </ul>
+                                    </li>
+                                
+                              
+                                
+                                    <li>
+                                        <a href="#resource_update-user" title = "Resource Update User">Resource Update User</a>
+                                        <ul class="toc  ">
+                                        
+                                            
+                                                <li><a href="#action_remember-user-password" title ="GET - Remember User Password">GET - Remember User Password</a></li>
+                                            
+
+                                        
+                                        </ul>
+                                    </li>
+                                
+                              
+                                
+                                    <li>
+                                        <a href="#resource_verify-user-password" title = "Resource Verify User Password">Resource Verify User Password</a>
+                                        <ul class="toc  ">
+                                        
+                                            
+                                                <li><a href="#action_reset-user-password" title ="PUT - Reset User Password">PUT - Reset User Password</a></li>
+                                            
+
+                                        
+                                        </ul>
+                                    </li>
+                                
+                              
+                                
+                                    <li>
+                                        <a href="#resource_entities" title = "Resource Entities">Resource Entities</a>
+                                        <ul class="toc  ">
+                                        
+                                            
+                                                <li><a href="#action_get-all-entities" title ="GET - Get all entities">GET - Get all entities</a></li>
+                                            
+
+                                        
+                                            
+                                                <li><a href="#action_create-entity" title ="POST - Create entity">POST - Create entity</a></li>
+                                            
+
+                                        
+                                        </ul>
+                                    </li>
+                                
+                              
+                                
+                                    <li>
+                                        <a href="#resource_entities-collection" title = "Resource Entities Collection">Resource Entities Collection</a>
+                                        <ul class="toc  ">
+                                        
+                                            
+                                                <li><a href="#action_entity-info" title ="GET - Entity Info">GET - Entity Info</a></li>
+                                            
+
+                                        
+                                            
+                                                <li><a href="#action_update-entity" title ="PUT - Update Entity">PUT - Update Entity</a></li>
+                                            
+
+                                        
+                                            
+                                                <li><a href="#action_delete-entity" title ="DELETE - Delete Entity">DELETE - Delete Entity</a></li>
+                                            
+
+                                        
+                                        </ul>
+                                    </li>
+                                
+                              
+                                
+                                    <li>
+                                        <a href="#resource_channels" title = "Resource Channels">Resource Channels</a>
+                                        <ul class="toc  ">
+                                        
+                                            
+                                                <li><a href="#action_get-channels" title ="GET - Get channels">GET - Get channels</a></li>
+                                            
+
+                                        
+                                            
+                                                <li><a href="#action_create-channel" title ="POST - Create channel">POST - Create channel</a></li>
+                                            
+
+                                        
+                                        </ul>
+                                    </li>
+                                
+                              
+                                
+                                    <li>
+                                        <a href="#resource_channels-collection" title = "Resource Channels Collection">Resource Channels Collection</a>
+                                        <ul class="toc  ">
+                                        
+                                            
+                                                <li><a href="#action_channel-info" title ="GET - Channel Info">GET - Channel Info</a></li>
+                                            
+
+                                        
+                                            
+                                                <li><a href="#action_update-channel" title ="PUT - Update Channel">PUT - Update Channel</a></li>
+                                            
+
+                                        
+                                            
+                                                <li><a href="#action_delete-channel" title ="DELETE - Delete Channel">DELETE - Delete Channel</a></li>
+                                            
+
+                                        
+                                        </ul>
+                                    </li>
+                                
+                              
+                            </ul>
+                        </li>
+                      
+    <li><a href="#examples">Examples</a></li>
+    </ul>
+</li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   </ul>
+</nav>
+
+  </div>
+  
+
+
+  <div id="API-content">
+  
+    
+	
+
+	
+
+
+
+	
+
+	
+
+
+
+
+
+	
+	
+	
+
+	
+	
+	
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+
+
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+
+<hr>
+
+
+	<h2 id="abstract">Abstract</h2>
+	<p>AEON open API allows you to implement your resources management in your own way. This is a key point of AEON, your applications could have flexibility enough, not only to send/receive data, but also to configure your environment in a very dynamic way. For example, a chat application could manage rooms creating and deleting entities and channels regarding the needs.</p>
+<p>If you are a developer, this should be your section. Here you will find a detailed description of the REST API for resources managment and pub/sub functionality.</p>
+
+
+
+
+	
+
+	
+
+	
+
+<hr>
+  
+
+
+    
+    
+<nav class="api-summary">
+<h1 id="api-summary"> API Summary </h1>
+    <ul>
+
+
+    
+
+        <li>
+            
+                <a href="#default_group" title = "Default">Default</a>
+            
+            <ul>
+              
+                
+                    
+                        
+                            <li>
+                                <a href="#action_login" title = "POST - Login"><span class="actionMethod">POST</span> - Login
+                                
+                                    
+                                        [/login]
+                                    
+                                
+                                </a>
+                            </li>
+                        
+                        
+                    
+                
+              
+                
+                    
+                        
+                            <li>
+                                <a href="#action_logout" title = "GET - Logout"><span class="actionMethod">GET</span> - Logout
+                                
+                                    
+                                        [/logout]
+                                    
+                                
+                                </a>
+                            </li>
+                        
+                        
+                    
+                
+              
+                
+                    <li>
+                        <a href="#resource_users" title = "Resource Users">
+                        
+                            Users
+                        
+                        </a>
+                        <ul class="toc  ">
+                        
+                            
+                                <li>
+                                    <a href="#action_list-all-users" title ="GET - List All Users"><span class="actionMethod">GET</span> - List All Users
+                                    
+                                        
+                                            [/users]
+                                        
+                                    
+                                    </a>
+                                </li>
+                            
+
+                        
+                            
+                                <li>
+                                    <a href="#action_create-user" title ="POST - Create User"><span class="actionMethod">POST</span> - Create User
+                                    
+                                        
+                                            [/users]
+                                        
+                                    
+                                    </a>
+                                </li>
+                            
+
+                        
+                        </ul>
+                    </li>
+                
+              
+                
+                    
+                        
+                            <li>
+                                <a href="#action_user-info" title = "GET - User info"><span class="actionMethod">GET</span> - User info
+                                
+                                    
+                                        [/users/user]
+                                    
+                                
+                                </a>
+                            </li>
+                        
+                        
+                    
+                
+              
+                
+                    <li>
+                        <a href="#resource_user-collection" title = "Resource User Collection">
+                        
+                            User Collection
+                        
+                        </a>
+                        <ul class="toc  ">
+                        
+                            
+                                <li>
+                                    <a href="#action_get-user" title ="GET - Get user"><span class="actionMethod">GET</span> - Get user
+                                    
+                                        
+                                            [/users/{user_id}]
+                                        
+                                    
+                                    </a>
+                                </li>
+                            
+
+                        
+                            
+                                <li>
+                                    <a href="#action_delete-user" title ="DELETE - Delete User"><span class="actionMethod">DELETE</span> - Delete User
+                                    
+                                        
+                                            [/users/{user_id}]
+                                        
+                                    
+                                    </a>
+                                </li>
+                            
+
+                        
+                        </ul>
+                    </li>
+                
+              
+                
+                    <li>
+                        <a href="#resource_update-user" title = "Resource Update User">
+                        
+                            Update User
+                        
+                        </a>
+                        <ul class="toc  ">
+                        
+                            
+                                <li>
+                                    <a href="#action_update-user-password" title ="PUT - Update User Password"><span class="actionMethod">PUT</span> - Update User Password
+                                    
+                                        
+                                            [/users/{user_id}/updatePassword]
+                                        
+                                    
+                                    </a>
+                                </li>
+                            
+
+                        
+                        </ul>
+                    </li>
+                
+              
+                
+                    <li>
+                        <a href="#resource_update-user" title = "Resource Update User">
+                        
+                            Update User
+                        
+                        </a>
+                        <ul class="toc  ">
+                        
+                            
+                                <li>
+                                    <a href="#action_remember-user-password" title ="GET - Remember User Password"><span class="actionMethod">GET</span> - Remember User Password
+                                    
+                                        
+                                            [/users/{user_id}/rememberPassword]
+                                        
+                                    
+                                    </a>
+                                </li>
+                            
+
+                        
+                        </ul>
+                    </li>
+                
+              
+                
+                    <li>
+                        <a href="#resource_verify-user-password" title = "Resource Verify User Password">
+                        
+                            Verify User Password
+                        
+                        </a>
+                        <ul class="toc  ">
+                        
+                            
+                                <li>
+                                    <a href="#action_reset-user-password" title ="PUT - Reset User Password"><span class="actionMethod">PUT</span> - Reset User Password
+                                    
+                                        
+                                            [/users/{user_id}/rememberPassword/{code}]
+                                        
+                                    
+                                    </a>
+                                </li>
+                            
+
+                        
+                        </ul>
+                    </li>
+                
+              
+                
+                    <li>
+                        <a href="#resource_entities" title = "Resource Entities">
+                        
+                            Entities
+                        
+                        </a>
+                        <ul class="toc  ">
+                        
+                            
+                                <li>
+                                    <a href="#action_get-all-entities" title ="GET - Get all entities"><span class="actionMethod">GET</span> - Get all entities
+                                    
+                                        
+                                            [/entities]
+                                        
+                                    
+                                    </a>
+                                </li>
+                            
+
+                        
+                            
+                                <li>
+                                    <a href="#action_create-entity" title ="POST - Create entity"><span class="actionMethod">POST</span> - Create entity
+                                    
+                                        
+                                            [/entities]
+                                        
+                                    
+                                    </a>
+                                </li>
+                            
+
+                        
+                        </ul>
+                    </li>
+                
+              
+                
+                    <li>
+                        <a href="#resource_entities-collection" title = "Resource Entities Collection">
+                        
+                            Entities Collection
+                        
+                        </a>
+                        <ul class="toc  ">
+                        
+                            
+                                <li>
+                                    <a href="#action_entity-info" title ="GET - Entity Info"><span class="actionMethod">GET</span> - Entity Info
+                                    
+                                        
+                                            [/entities/{entity_id}]
+                                        
+                                    
+                                    </a>
+                                </li>
+                            
+
+                        
+                            
+                                <li>
+                                    <a href="#action_update-entity" title ="PUT - Update Entity"><span class="actionMethod">PUT</span> - Update Entity
+                                    
+                                        
+                                            [/entities/{entity_id}]
+                                        
+                                    
+                                    </a>
+                                </li>
+                            
+
+                        
+                            
+                                <li>
+                                    <a href="#action_delete-entity" title ="DELETE - Delete Entity"><span class="actionMethod">DELETE</span> - Delete Entity
+                                    
+                                        
+                                            [/entities/{entity_id}]
+                                        
+                                    
+                                    </a>
+                                </li>
+                            
+
+                        
+                        </ul>
+                    </li>
+                
+              
+                
+                    <li>
+                        <a href="#resource_channels" title = "Resource Channels">
+                        
+                            Channels
+                        
+                        </a>
+                        <ul class="toc  ">
+                        
+                            
+                                <li>
+                                    <a href="#action_get-channels" title ="GET - Get channels"><span class="actionMethod">GET</span> - Get channels
+                                    
+                                        
+                                            [/entities/{entity_id}/channels]
+                                        
+                                    
+                                    </a>
+                                </li>
+                            
+
+                        
+                            
+                                <li>
+                                    <a href="#action_create-channel" title ="POST - Create channel"><span class="actionMethod">POST</span> - Create channel
+                                    
+                                        
+                                            [/entities/{entity_id}/channels]
+                                        
+                                    
+                                    </a>
+                                </li>
+                            
+
+                        
+                        </ul>
+                    </li>
+                
+              
+                
+                    <li>
+                        <a href="#resource_channels-collection" title = "Resource Channels Collection">
+                        
+                            Channels Collection
+                        
+                        </a>
+                        <ul class="toc  ">
+                        
+                            
+                                <li>
+                                    <a href="#action_channel-info" title ="GET - Channel Info"><span class="actionMethod">GET</span> - Channel Info
+                                    
+                                        
+                                            [/entities/{entity_id}/channels/{channel_id}]
+                                        
+                                    
+                                    </a>
+                                </li>
+                            
+
+                        
+                            
+                                <li>
+                                    <a href="#action_update-channel" title ="PUT - Update Channel"><span class="actionMethod">PUT</span> - Update Channel
+                                    
+                                        
+                                            [/entities/{entity_id}/channels/{channel_id}]
+                                        
+                                    
+                                    </a>
+                                </li>
+                            
+
+                        
+                            
+                                <li>
+                                    <a href="#action_delete-channel" title ="DELETE - Delete Channel"><span class="actionMethod">DELETE</span> - Delete Channel
+                                    
+                                        
+                                            [/entities/{entity_id}/channels/{channel_id}]
+                                        
+                                    
+                                    </a>
+                                </li>
+                            
+
+                        
+                        </ul>
+                    </li>
+                
+              
+            </ul>
+        </li>
+      
+
+    </ul>
+</nav>
+
+    
+    
+
+
+
+
+		
+	
+	
+		
+	
+		
+	
+		
+	
+
+
+
+
+
+	
+		
+			<section>
+				<h2 id="user_operations"> User operations</h2>
+<p>Documentation for user’s management. Most of the AEON’s functionalities requires registered users. This registered users will make use of the AEON’s functionality to create entities and channels.</p>
+<ul>
+<li>/login</li>
+<li>/logout</li>
+<li>/users</li>
+<li>/users/user </li>
+<li>/users/{user_id}</li>
+<li>/users/{user_id}/updatePassword</li>
+<li>/users/{user_id}/rememberPassword</li>
+<li>/users/{user_id}/rememberPassword/{code}</li>
+</ul>
+
+
+			</section>
+		
+	
+		
+			<section>
+				<h2 id="entities_operations"> Entities operations</h2>
+<p>Documentation for entity’s management. AEON entities are the basic resource to organize your different communication channels. An entity could mean whatever you want, a truck, a box of fish, a chat application, a chat room, your personal mobile, whatever.. By the moment, entities contains just a little description.</p>
+<p>Only users can create new entities, and these entities will contain the different channels.</p>
+<ul>
+<li>/entities</li>
+<li>/entities/{entity_id}</li>
+</ul>
+
+
+			</section>
+		
+	
+		
+			<section>
+				<h2 id="channels_operations"> Channels operations</h2>
+<p>AEON channels are the most valuable resource, actually, you are here because you want communication channels. A channel is a communication resource allowing publication an subscription mechanisms.</p>
+<p>Channels need to be organized into an existing entity and contains:
+- A little description
+- The pub/sub urls
+- A list of allowed subscribers</p>
+<p>Operations to work with channels are:</p>
+<ul>
+<li>/entities/{entity_id}/channels</li>
+<li>/entities/{entity_id}/channels/{channel_id}</li>
+</ul>
+
+
+			</section>
+		
+	
+
+
+
+    
+
+  
+  <section id="API_specification">
+      <h1>API Specification</h1>
+      
+
+
+
+
+        
+            <section id="default_group" class="resourceGroup">
+             <div class= "header" ><h2 id="h-default_group"> Default </h2></div>
+        
+	
+        
+            <section id="resource_login" class="resource">
+                 <div class= "header" >
+                 
+                    <h3 id="h-resource_login">Login</h3>
+                    <span class="extra-header">[/login]</span>
+                 
+                 </div>
+                
+                
+                
+
+		        
+                
+                
+
+
+
+
+
+
+    
+
+
+                
+
+
+                    
+                        <div id="action_login" class="action POST">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_login">Login </h4>
+            <span class="extra-header">
+		POST 
+                
+                    /login
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="login_body" class="">
+                                <p>Logging process with an existing user and password (POST /users/) . If the process results “ok” you will receive a cookie with your session. This cookie will be used in most of the operations.</p>
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+                                            
+                                            
+                                            
+                                            
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Request </span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_login_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+            </section>
+        
+            <section id="resource_logout" class="resource">
+                 <div class= "header" >
+                 
+                    <h3 id="h-resource_logout">Logout</h3>
+                    <span class="extra-header">[/logout]</span>
+                 
+                 </div>
+                
+                
+                
+
+		        
+                
+                
+
+
+
+
+
+
+    
+
+
+                
+
+
+                    
+                        <div id="action_logout" class="action GET">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_logout">Logout </h4>
+            <span class="extra-header">
+		GET 
+                
+                    /logout
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="logout_body" class="">
+                                <p>Logout process. The user set in the cookie will be unset from it. The cookie won’t be deleted from the server.</p>
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_logout_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+            </section>
+        
+            <section id="resource_users" class="resource">
+                 <div class= "header" >
+                 
+                    <h3 id="h-resource_users">Users</h3>
+                    <span class="extra-header">[/users]</span>
+                 
+                 </div>
+                
+                
+                
+
+		        
+                
+                
+
+
+
+
+
+
+    
+
+
+                
+
+
+                    
+                        <div id="action_list-all-users" class="action GET">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_list-all-users">List All Users </h4>
+            <span class="extra-header">
+		GET 
+                
+                    /users
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="list-all-users_body" class="">
+                                <p>Get list of registered users. Just basic information. Preconditions:</p>
+<ul>
+<li>You need to be logged: (Login)</li>
+</ul>
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_list-all-users_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+                        <div id="action_create-user" class="action POST">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_create-user">Create User </h4>
+            <span class="extra-header">
+		POST 
+                
+                    /users
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="create-user_body" class="">
+                                <p>Create/Register a new user into the system. By the moment, it only includes information about user and password.</p>
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+                                            
+                                            
+                                            
+                                            
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Request </span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_create-user_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+            </section>
+        
+            <section id="resource_user-info" class="resource">
+                 <div class= "header" >
+                 
+                    <h3 id="h-resource_user-info">User info</h3>
+                    <span class="extra-header">[/users/user]</span>
+                 
+                 </div>
+                
+                
+                
+
+		        
+                
+                
+
+
+
+
+
+
+    
+
+
+                
+
+
+                    
+                        <div id="action_user-info" class="action GET">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_user-info">User info </h4>
+            <span class="extra-header">
+		GET 
+                
+                    /users/user
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="user-info_body" class="">
+                                <p>Retrieves the information related to the user identified in the cookie.</p>
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_user-info_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+            </section>
+        
+            <section id="resource_user-collection" class="resource">
+                 <div class= "header" >
+                 
+                    <h3 id="h-resource_user-collection">User Collection</h3>
+                    <span class="extra-header">[/users/{user_id}]</span>
+                 
+                 </div>
+                <ul>
+<li>Parameters: <ul>
+<li>user_id - User id</li>
+</ul>
+</li>
+</ul>
+                
+                
+
+		        
+                
+                
+
+
+
+
+
+
+    
+
+
+                
+
+
+                    
+                        <div id="action_get-user" class="action GET">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_get-user">Get user </h4>
+            <span class="extra-header">
+		GET 
+                
+                    /users/{user_id}
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="get-user_body" class="">
+                                <p>Get complete information of an specific user. Preconditions:</p>
+<ul>
+<li>
+<p>In order to get extra information of an existing user you need to be logged</p>
+</li>
+<li>
+<p>You need to be logged as (user_id): (Login)</p>
+</li>
+</ul>
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_get-user_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+                        <div id="action_delete-user" class="action DELETE">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_delete-user">Delete User </h4>
+            <span class="extra-header">
+		DELETE 
+                
+                    /users/{user_id}
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="delete-user_body" class="">
+                                <p>Delete an specific user. When a user is deleted, all the entities and the information assigned will be deleted too. Preconditions:</p>
+<ul>
+<li>
+<p>In order to delete an existing user you need to be logged</p>
+</li>
+<li>
+<p>You need to be logged as (user_id): (Login)</p>
+</li>
+</ul>
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_delete-user_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+            </section>
+        
+            <section id="resource_update-user" class="resource">
+                 <div class= "header" >
+                 
+                    <h3 id="h-resource_update-user">Update User</h3>
+                    <span class="extra-header">[/users/{user_id}/updatePassword]</span>
+                 
+                 </div>
+                <ul>
+<li>Parameters: <ul>
+<li>user_id - User id</li>
+</ul>
+</li>
+</ul>
+                
+                
+
+		        
+                
+                
+
+
+
+
+
+
+    
+
+
+                
+
+
+                    
+                        <div id="action_update-user-password" class="action PUT">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_update-user-password">Update User Password </h4>
+            <span class="extra-header">
+		PUT 
+                
+                    /users/{user_id}/updatePassword
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="update-user-password_body" class="">
+                                <p>Change the user password.</p>
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_update-user-password_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+            </section>
+        
+            <section id="resource_update-user" class="resource">
+                 <div class= "header" >
+                 
+                    <h3 id="h-resource_update-user">Update User</h3>
+                    <span class="extra-header">[/users/{user_id}/rememberPassword]</span>
+                 
+                 </div>
+                <p>This function is in charge of helping to remember a forgotten or missed password. Mainly, an existing user id will be requested (users are registered with emails). Thus, the user will receive an email with extra information in his email address. The extra information contains a temporal code used to reset the password with (Reset the user’s password).
+Generate a temporal code to change the user’s password. (user_id) is the email of an existing user. Through this email he will receive the necessary information to (Reset the user’s password).</p>
+<ul>
+<li>Parameters: <ul>
+<li>user_id - User id</li>
+</ul>
+</li>
+</ul>
+                
+                
+
+		        
+                
+                
+
+
+
+
+
+
+    
+
+
+                
+
+
+                    
+                        <div id="action_remember-user-password" class="action GET">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_remember-user-password">Remember User Password </h4>
+            <span class="extra-header">
+		GET 
+                
+                    /users/{user_id}/rememberPassword
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="remember-user-password_body" class="">
+                                
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_remember-user-password_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+            </section>
+        
+            <section id="resource_verify-user-password" class="resource">
+                 <div class= "header" >
+                 
+                    <h3 id="h-resource_verify-user-password">Verify User Password</h3>
+                    <span class="extra-header">[/users/{user_id}/rememberPassword/{code}]</span>
+                 
+                 </div>
+                <p>This function is in charge of resetting a forgotten or missed password. The user needs to provide an existing user id (users are registered with emails), the new password and a temporal code generated by (Remember the user’s password).
+Changes user’s password of (user_id) using the retrieved (code) by (Remember the user’s password).</p>
+<ul>
+<li>Parameters: <ul>
+<li>user_id - User id</li>
+<li>code - Verfication code sent to the user by email </li>
+</ul>
+</li>
+</ul>
+                
+                
+
+		        
+                
+                
+
+
+
+
+
+
+    
+
+
+                
+
+
+                    
+                        <div id="action_reset-user-password" class="action PUT">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_reset-user-password">Reset User Password </h4>
+            <span class="extra-header">
+		PUT 
+                
+                    /users/{user_id}/rememberPassword/{code}
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="reset-user-password_body" class="">
+                                
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+                                            
+                                            
+                                            
+                                            
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Request </span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_reset-user-password_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+            </section>
+        
+            <section id="resource_entities" class="resource">
+                 <div class= "header" >
+                 
+                    <h3 id="h-resource_entities">Entities</h3>
+                    <span class="extra-header">[/entities]</span>
+                 
+                 </div>
+                
+                
+                
+
+		        
+                
+                
+
+
+
+
+
+
+    
+
+
+                
+
+
+                    
+                        <div id="action_get-all-entities" class="action GET">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_get-all-entities">Get all entities </h4>
+            <span class="extra-header">
+		GET 
+                
+                    /entities
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="get-all-entities_body" class="">
+                                <p>Get list of entities owned by the logged user. Preconditions:</p>
+<ul>
+<li>You need to be logged: (Login)</li>
+</ul>
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_get-all-entities_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+                        <div id="action_create-entity" class="action POST">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_create-entity">Create entity </h4>
+            <span class="extra-header">
+		POST 
+                
+                    /entities
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="create-entity_body" class="">
+                                <p>Create a new entity into the system. By the moment, entities only contains information about description and a list of channels. Some preconditions: </p>
+<ul>
+<li>You need to be logged: (Login)</li>
+</ul>
+<p>The entity will be created and owned by the logged user.</p>
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+                                            
+                                            
+                                            
+                                            
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Request </span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_create-entity_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+            </section>
+        
+            <section id="resource_entities-collection" class="resource">
+                 <div class= "header" >
+                 
+                    <h3 id="h-resource_entities-collection">Entities Collection</h3>
+                    <span class="extra-header">[/entities/{entity_id}]</span>
+                 
+                 </div>
+                <ul>
+<li>Parameters:<ul>
+<li>entity_id - Entity Id</li>
+</ul>
+</li>
+</ul>
+                
+                
+
+		        
+                
+                
+
+
+
+
+
+
+    
+
+
+                
+
+
+                    
+                        <div id="action_entity-info" class="action GET">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_entity-info">Entity Info </h4>
+            <span class="extra-header">
+		GET 
+                
+                    /entities/{entity_id}
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="entity-info_body" class="">
+                                <p>Get complete information of an specific entity. Preconditions:</p>
+<ul>
+<li>
+<p>In order to get extra information of an existing entity you need to be logged</p>
+</li>
+<li>
+<p>You need to be logged (Login) as the owner of (entity_id):</p>
+</li>
+</ul>
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_entity-info_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+                        <div id="action_update-entity" class="action PUT">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_update-entity">Update Entity </h4>
+            <span class="extra-header">
+		PUT 
+                
+                    /entities/{entity_id}
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="update-entity_body" class="">
+                                <p>Update the name or the description of an entity. Preconditions:</p>
+<ul>
+<li>
+<p>In order to delete an existing user you need to be logged</p>
+</li>
+<li>
+<p>You need to be logged as the owner of the entity: (Login)</p>
+</li>
+</ul>
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+                                            
+                                            
+                                            
+                                            
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Request </span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_update-entity_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+                        <div id="action_delete-entity" class="action DELETE">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_delete-entity">Delete Entity </h4>
+            <span class="extra-header">
+		DELETE 
+                
+                    /entities/{entity_id}
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="delete-entity_body" class="">
+                                <p>Delete an specific entity. When an entity is deleted, the channels that belongs to it will be deleted too. Preconditions:</p>
+<ul>
+<li>
+<p>In order to delete an existing entity you need to be logged</p>
+</li>
+<li>
+<p>You need to be logged as the owner of the entity: (Login)</p>
+</li>
+</ul>
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_delete-entity_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+            </section>
+        
+            <section id="resource_channels" class="resource">
+                 <div class= "header" >
+                 
+                    <h3 id="h-resource_channels">Channels</h3>
+                    <span class="extra-header">[/entities/{entity_id}/channels]</span>
+                 
+                 </div>
+                <ul>
+<li>Parameters:<ul>
+<li>entity_id: Entity Id</li>
+</ul>
+</li>
+</ul>
+                
+                
+
+		        
+                
+                
+
+
+
+
+
+
+    
+
+
+                
+
+
+                    
+                        <div id="action_get-channels" class="action GET">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_get-channels">Get channels </h4>
+            <span class="extra-header">
+		GET 
+                
+                    /entities/{entity_id}/channels
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="get-channels_body" class="">
+                                <p>Get the list of channels of an specific entity. Preconditions:</p>
+<ul>
+<li>
+<p>You need to be logged: (Login)</p>
+</li>
+<li>
+<p>You need to be logged as the owner of the (entity_id)</p>
+</li>
+</ul>
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_get-channels_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+                        <div id="action_create-channel" class="action POST">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_create-channel">Create channel </h4>
+            <span class="extra-header">
+		POST 
+                
+                    /entities/{entity_id}/channels
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="create-channel_body" class="">
+                                <p>Create a new channel into the specific entity. Channels contains information about description and the pub/sub mechanisms. Some preconditions: - You need to be logged: (Login) - You need to be logged as the owner of the (entity_id) where your are requesting a new channel</p>
+<p>The channel will be attached to the entity, together with Pub_Url and a (Sub_Url).</p>
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+                                            
+                                            
+                                            
+                                            
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Request </span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_create-channel_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+            </section>
+        
+            <section id="resource_channels-collection" class="resource">
+                 <div class= "header" >
+                 
+                    <h3 id="h-resource_channels-collection">Channels Collection</h3>
+                    <span class="extra-header">[/entities/{entity_id}/channels/{channel_id}]</span>
+                 
+                 </div>
+                <ul>
+<li>Parameters:<ul>
+<li>entity_id - Entity Id</li>
+<li>channel_id - Channel Id</li>
+</ul>
+</li>
+</ul>
+                
+                
+
+		        
+                
+                
+
+
+
+
+
+
+    
+
+
+                
+
+
+                    
+                        <div id="action_channel-info" class="action GET">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_channel-info">Channel Info </h4>
+            <span class="extra-header">
+		GET 
+                
+                    /entities/{entity_id}/channels/{channel_id}
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="channel-info_body" class="">
+                                <p>Get complete information of an specific channel. Preconditions:</p>
+<ul>
+<li>
+<p>You need to be logged: (Login)</p>
+</li>
+<li>
+<p>You need to be logged as the owner of the (entity_id)</p>
+</li>
+<li>
+<p>(channel_id) has to be attached to the list of channels of (entity_id)</p>
+</li>
+</ul>
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_channel-info_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+                        <div id="action_update-channel" class="action PUT">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_update-channel">Update Channel </h4>
+            <span class="extra-header">
+		PUT 
+                
+                    /entities/{entity_id}/channels/{channel_id}
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="update-channel_body" class="">
+                                <p>Updates the information of an specific channel. Preconditions:</p>
+<ul>
+<li>
+<p>You need to be logged: (Login)</p>
+</li>
+<li>
+<p>You need to be logged as the owner of the (entity_id)</p>
+</li>
+<li>
+<p>(channel_id) has to be attached to the list of channels of (entity_id)</p>
+</li>
+</ul>
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+                                            
+                                            
+                                            
+                                            
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Request </span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_update-channel_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+                        <div id="action_delete-channel" class="action DELETE">
+
+                        
+    <div class="header">
+        
+            <h4 id="h-action_delete-channel">Delete Channel </h4>
+            <span class="extra-header">
+		DELETE 
+                
+                    /entities/{entity_id}/channels/{channel_id}
+                
+            </span>
+        
+
+    </div>
+
+        
+                            <div id="delete-channel_body" class="">
+                                <p>Delete an specific channel. Preconditions:</p>
+<ul>
+<li>
+<p>You need to be logged: (Login)</p>
+</li>
+<li>
+<p>You need to be logged as the owner of the (entity_id)</p>
+</li>
+<li>
+<p>(channel_id) has to be attached to the list of channels of (entity_id)</p>
+</li>
+</ul>
+                                
+                                
+                                
+			
+                                
+                                
+      
+                                    
+        	                            
+    
+        	                            
+        		                            
+                                        
+                                        
+                                        
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+     
+</div>
+        	                            
+                                    
+                                    <div>
+                                    <div class="goExample">
+                                        <a href="#action_delete-channel_examples">Go to example</a>
+                                    </div>
+                                    
+                                        
+    <div class="goApiary">
+    
+        
+    
+        
+    
+    </div>
+
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+            </section>
+        
+    </section>
+
+<section id="examples">
+    <div class= "header" ><h2>Examples</h2> </div>
+    
+        
+            <section id="resource_group__example" class="resourceGroupExample">
+                <div class= "header" ><h3 id="h-resource_group__example">Default</h3> </div>
+        
+
+                
+                    <section id="resource_login_example" class="resourceExample">
+                         <div class= "header" >
+                         
+                            <h4 id="h-resource_login_example">Login</h4>
+                            <span class="extra-header">[/login]</span>
+                         
+                         </div>
+
+                            
+                            
+                            
+
+                            
+                            
+                            
+
+                           
+
+                            
+                                <div id="action_login_examples" class="actionExample POST">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_login_examples">Login </h5>
+            <span class="extra-header">
+		POST 
+                
+                    /login
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_login_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+                                                    
+                                                    
+                                                    
+                                                    
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Request </span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_login_Request_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+  "username": "john",
+  "password": "john",
+  "type": "user"
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_login_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+  "code": 200,
+  "desc": "ok"
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_login">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                    </section>
+            
+                    <section id="resource_logout_example" class="resourceExample">
+                         <div class= "header" >
+                         
+                            <h4 id="h-resource_logout_example">Logout</h4>
+                            <span class="extra-header">[/logout]</span>
+                         
+                         </div>
+
+                            
+                            
+                            
+
+                            
+                            
+                            
+
+                           
+
+                            
+                                <div id="action_logout_examples" class="actionExample GET">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_logout_examples">Logout </h5>
+            <span class="extra-header">
+		GET 
+                
+                    /logout
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_logout_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_logout_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+  "code": 200,
+  "desc": "ok"
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_logout">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                    </section>
+            
+                    <section id="resource_users_example" class="resourceExample">
+                         <div class= "header" >
+                         
+                            <h4 id="h-resource_users_example">Users</h4>
+                            <span class="extra-header">[/users]</span>
+                         
+                         </div>
+
+                            
+                            
+                            
+
+                            
+                            
+                            
+
+                           
+
+                            
+                                <div id="action_list-all-users_examples" class="actionExample GET">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_list-all-users_examples">List All Users </h5>
+            <span class="extra-header">
+		GET 
+                
+                    /users
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_list-all-users_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_list-all-users_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "code": 200,
+    "desc": "ok"
+    "result":
+        [
+            {
+                "username": "john",
+                "type": "user",
+                "_id": "john"
+            },
+            {
+                "username": "jammes",
+                "type": "user",
+                "_id": "jammes"
+            }
+        ]
+}    
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_list-all-users">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                                <div id="action_create-user_examples" class="actionExample POST">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_create-user_examples">Create User </h5>
+            <span class="extra-header">
+		POST 
+                
+                    /users
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_create-user_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+                                                    
+                                                    
+                                                    
+                                                    
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Request </span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_create-user_Request_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "username": "john",
+    "password": "john",
+    "type": "user",
+    "_id": "john"
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_create-user_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "code": 200,
+    "desc": "ok"
+    "result":
+        [
+            {
+                "username": "john",
+                "password": "john",
+                "type": "user",
+                "_id": "john"
+            }
+        ]
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_create-user">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                    </section>
+            
+                    <section id="resource_user-info_example" class="resourceExample">
+                         <div class= "header" >
+                         
+                            <h4 id="h-resource_user-info_example">User info</h4>
+                            <span class="extra-header">[/users/user]</span>
+                         
+                         </div>
+
+                            
+                            
+                            
+
+                            
+                            
+                            
+
+                           
+
+                            
+                                <div id="action_user-info_examples" class="actionExample GET">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_user-info_examples">User info </h5>
+            <span class="extra-header">
+		GET 
+                
+                    /users/user
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_user-info_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_user-info_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "code": 200,
+    "desc": "ok",
+    "result": [
+        {
+            "_id": "userID",
+            "type": "user",
+            "username": "username"
+        }
+    ]
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_user-info">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                    </section>
+            
+                    <section id="resource_user-collection_example" class="resourceExample">
+                         <div class= "header" >
+                         
+                            <h4 id="h-resource_user-collection_example">User Collection</h4>
+                            <span class="extra-header">[/users/{user_id}]</span>
+                         
+                         </div>
+
+                            
+                            
+                            
+
+                            
+                            
+                            
+
+                           
+
+                            
+                                <div id="action_get-user_examples" class="actionExample GET">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_get-user_examples">Get user </h5>
+            <span class="extra-header">
+		GET 
+                
+                    /users/{user_id}
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_get-user_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_get-user_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "code": 200,
+    "desc": "ok",
+    "result": [
+        {
+            "_id": "userID",
+            "type": "user",
+            "username": "username"
+        }
+    ]
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_get-user">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                                <div id="action_delete-user_examples" class="actionExample DELETE">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_delete-user_examples">Delete User </h5>
+            <span class="extra-header">
+		DELETE 
+                
+                    /users/{user_id}
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_delete-user_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_delete-user_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+  "code": 200,
+  "desc": "ok",
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_delete-user">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                    </section>
+            
+                    <section id="resource_update-user_example" class="resourceExample">
+                         <div class= "header" >
+                         
+                            <h4 id="h-resource_update-user_example">Update User</h4>
+                            <span class="extra-header">[/users/{user_id}/updatePassword]</span>
+                         
+                         </div>
+
+                            
+                            
+                            
+
+                            
+                            
+                            
+
+                           
+
+                            
+                                <div id="action_update-user-password_examples" class="actionExample PUT">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_update-user-password_examples">Update User Password </h5>
+            <span class="extra-header">
+		PUT 
+                
+                    /users/{user_id}/updatePassword
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_update-user-password_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_update-user-password_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "code": 200,
+    "desc": "ok",
+    "result": [
+    ]
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_update-user-password">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                    </section>
+            
+                    <section id="resource_update-user_example" class="resourceExample">
+                         <div class= "header" >
+                         
+                            <h4 id="h-resource_update-user_example">Update User</h4>
+                            <span class="extra-header">[/users/{user_id}/rememberPassword]</span>
+                         
+                         </div>
+
+                            
+                            
+                            
+
+                            
+                            
+                            
+
+                           
+
+                            
+                                <div id="action_remember-user-password_examples" class="actionExample GET">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_remember-user-password_examples">Remember User Password </h5>
+            <span class="extra-header">
+		GET 
+                
+                    /users/{user_id}/rememberPassword
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_remember-user-password_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_remember-user-password_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "code": 200,
+    "desc": "ok",
+    "result": 
+        [
+            "You will receive an email with information for reset."
+        ]
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_remember-user-password">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                    </section>
+            
+                    <section id="resource_verify-user-password_example" class="resourceExample">
+                         <div class= "header" >
+                         
+                            <h4 id="h-resource_verify-user-password_example">Verify User Password</h4>
+                            <span class="extra-header">[/users/{user_id}/rememberPassword/{code}]</span>
+                         
+                         </div>
+
+                            
+                            
+                            
+
+                            
+                            
+                            
+
+                           
+
+                            
+                                <div id="action_reset-user-password_examples" class="actionExample PUT">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_reset-user-password_examples">Reset User Password </h5>
+            <span class="extra-header">
+		PUT 
+                
+                    /users/{user_id}/rememberPassword/{code}
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_reset-user-password_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+                                                    
+                                                    
+                                                    
+                                                    
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Request </span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_reset-user-password_Request_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+     "password": "newPassword",
+     "type": "user"
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_reset-user-password_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "code": 200,
+    "desc": "ok",
+    "result": [
+    ]
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_reset-user-password">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                    </section>
+            
+                    <section id="resource_entities_example" class="resourceExample">
+                         <div class= "header" >
+                         
+                            <h4 id="h-resource_entities_example">Entities</h4>
+                            <span class="extra-header">[/entities]</span>
+                         
+                         </div>
+
+                            
+                            
+                            
+
+                            
+                            
+                            
+
+                           
+
+                            
+                                <div id="action_get-all-entities_examples" class="actionExample GET">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_get-all-entities_examples">Get all entities </h5>
+            <span class="extra-header">
+		GET 
+                
+                    /entities
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_get-all-entities_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_get-all-entities_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "code": 200,
+    "desc": "ok"
+    "result":
+    [
+        {
+
+            "_id": "entityid",
+            "channels": [ … ],
+            "entitydescription": "entitydescription",
+            "entityname": "entityname",
+            "owner": "userid",
+            "type": "entity"
+
+        },
+    ...
+    ]
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_get-all-entities">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                                <div id="action_create-entity_examples" class="actionExample POST">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_create-entity_examples">Create entity </h5>
+            <span class="extra-header">
+		POST 
+                
+                    /entities
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_create-entity_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+                                                    
+                                                    
+                                                    
+                                                    
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Request </span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_create-entity_Request_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+  "entityname": "entityname",
+  "entitydescription": "entitydescription",
+  "type": "entity",
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_create-entity_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "code": 200,
+    "desc": "ok"
+    "result":
+        [
+            {
+                "entityname": "entityname",
+                "entitydescription": "entitydescription",
+                "type": "entity",
+                "owner": "userid",
+                "channels": ["channelname"]
+            }
+        ]
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_create-entity">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                    </section>
+            
+                    <section id="resource_entities-collection_example" class="resourceExample">
+                         <div class= "header" >
+                         
+                            <h4 id="h-resource_entities-collection_example">Entities Collection</h4>
+                            <span class="extra-header">[/entities/{entity_id}]</span>
+                         
+                         </div>
+
+                            
+                            
+                            
+
+                            
+                            
+                            
+
+                           
+
+                            
+                                <div id="action_entity-info_examples" class="actionExample GET">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_entity-info_examples">Entity Info </h5>
+            <span class="extra-header">
+		GET 
+                
+                    /entities/{entity_id}
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_entity-info_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_entity-info_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "code": 200,
+    "desc": "ok"
+    "result":
+    [
+        {
+
+            "_id": "entityid",
+            "channels": [ … ],
+            "entitydescription": "entitydescription",
+            "entityname": "entityname",
+            "owner": "userid",
+            "type": "entity"
+
+        },
+    ]
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_entity-info">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                                <div id="action_update-entity_examples" class="actionExample PUT">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_update-entity_examples">Update Entity </h5>
+            <span class="extra-header">
+		PUT 
+                
+                    /entities/{entity_id}
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_update-entity_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+                                                    
+                                                    
+                                                    
+                                                    
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Request </span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_update-entity_Request_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+  "entityname": "entityname modified",
+  "entitydescription": "entity description modified",
+  "type": "entity"
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_update-entity_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "code": 200,
+    "desc": "ok",
+    "result": [
+    ]
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_update-entity">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                                <div id="action_delete-entity_examples" class="actionExample DELETE">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_delete-entity_examples">Delete Entity </h5>
+            <span class="extra-header">
+		DELETE 
+                
+                    /entities/{entity_id}
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_delete-entity_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_delete-entity_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "code": 200,
+    "desc": "ok",
+    "result": [
+    ]
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_delete-entity">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                    </section>
+            
+                    <section id="resource_channels_example" class="resourceExample">
+                         <div class= "header" >
+                         
+                            <h4 id="h-resource_channels_example">Channels</h4>
+                            <span class="extra-header">[/entities/{entity_id}/channels]</span>
+                         
+                         </div>
+
+                            
+                            
+                            
+
+                            
+                            
+                            
+
+                           
+
+                            
+                                <div id="action_get-channels_examples" class="actionExample GET">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_get-channels_examples">Get channels </h5>
+            <span class="extra-header">
+		GET 
+                
+                    /entities/{entity_id}/channels
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_get-channels_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_get-channels_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "code": 200,
+    "desc": "ok"
+    "result":
+    [
+        {
+            "_id": "51e7be461fb1a1f179000002",
+            "channelName": "channelname",
+            "channeldesc": "channeldesc",
+            "pubID": "4ca05d1f-ff02-481d-a1db-9d69c6bfff73",
+            "subID": "d203158e-bac8-49ee-b2d3-1fd82729fa09"
+        },
+        ...
+    ]
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_get-channels">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                                <div id="action_create-channel_examples" class="actionExample POST">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_create-channel_examples">Create channel </h5>
+            <span class="extra-header">
+		POST 
+                
+                    /entities/{entity_id}/channels
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_create-channel_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+                                                    
+                                                    
+                                                    
+                                                    
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Request </span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_create-channel_Request_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "channelName": "channelname",
+    "channeldesc": "channeldesc",
+    "type": "channel"
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_create-channel_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "code": 200,
+    "desc": "ok"
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_create-channel">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                    </section>
+            
+                    <section id="resource_channels-collection_example" class="resourceExample">
+                         <div class= "header" >
+                         
+                            <h4 id="h-resource_channels-collection_example">Channels Collection</h4>
+                            <span class="extra-header">[/entities/{entity_id}/channels/{channel_id}]</span>
+                         
+                         </div>
+
+                            
+                            
+                            
+
+                            
+                            
+                            
+
+                           
+
+                            
+                                <div id="action_channel-info_examples" class="actionExample GET">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_channel-info_examples">Channel Info </h5>
+            <span class="extra-header">
+		GET 
+                
+                    /entities/{entity_id}/channels/{channel_id}
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_channel-info_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_channel-info_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "code": 200,
+    "desc": "ok"
+    "result":
+        [
+            {
+            "_id": "51e7be461fb1a1f179000002",
+            "channelName": "channelname",
+            "channeldesc": "channeldesc",
+            "pubID": "4ca05d1f-ff02-481d-a1db-9d69c6bfff73",
+            "subID": "d203158e-bac8-49ee-b2d3-1fd82729fa09",
+            "puburl": "http://130.206.81.70:3000/publish/4ca05d1f-ff02-481d-a1db-9d69c6bfff73",
+            "subscriptionsurl": "http://130.206.81.70:3000/subscribe/d203158e-bac8-49ee-b2d3-1fd82729fa09",
+            "subscriptions": 
+                [
+                    {
+                        _id: "53bfe41faf5e6e0200000016",
+                        desc: "demo-sub",
+                        id: "demo-sub",
+                        ip: "http://130.206.81.70:3000",
+                        subkey: "Delivery Item 1-10925842-queu"
+                    },
+                    ...
+                ]
+            }
+        ]
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_channel-info">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                                <div id="action_update-channel_examples" class="actionExample PUT">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_update-channel_examples">Update Channel </h5>
+            <span class="extra-header">
+		PUT 
+                
+                    /entities/{entity_id}/channels/{channel_id}
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_update-channel_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+                                                    
+                                                    
+                                                    
+                                                    
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Request </span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_update-channel_Request_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "channelName": "new channelname",
+    "channeldesc": "new channeldesc",
+    "type": "channel"
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_update-channel_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "code": 200,
+    "desc": "ok",
+    "result": [
+    ]
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_update-channel">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                                <div id="action_delete-channel_examples" class="actionExample DELETE">
+
+                                    
+    <div class="header">
+        
+            <h5 id="h-action_delete-channel_examples">Delete Channel </h5>
+            <span class="extra-header">
+		DELETE 
+                
+                    /entities/{entity_id}/channels/{channel_id}
+                
+            </span>
+        
+
+    </div>
+
+                
+                                    <div id="action_delete-channel_body" class=""> 
+                                        
+                                        
+                                        
+                                                 
+                                        
+                                            
+                                            
+                                                
+            
+                                                
+                                                    
+                                                
+                                                
+                                                
+
+<div class="rest-packet-div">
+
+            <span class="packetType">Response 200</span> 
+        
+            (application/json)
+        
+    
+            
+            
+            
+            
+
+
+
+ 
+            <div id="action_delete-channel_Response_1_body" class=" action-div-body">
+                <p></p>
+
+                
+        	         <div class= "header"><p>Headers</p></div>
+                    
+                    
+                        
+                    
+
+        	        <pre><code>Content-Type: application/json</code></pre>
+                
+
+                
+                    <div class= "header"><p>Body</p></div>
+                    <pre><code>{
+    "code": 200,
+    "desc": "ok",
+    "result": [
+    ]
+}
+</code></pre>
+                
+
+                
+            </div>
+            
+            
+     
+</div>
+                                                
+                                            
+                                            <div class="goActions">
+                                                <a href="#action_delete-channel">Go to specification</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                    </section>
+            
+        </section>
+    
+
+
+
+</section>
+  </section>
+  
+   
+
+
+
+	
+
+	
+
+	
+
+    
+    
+    
+  </div>
+</div>
+</body>
+
+</html>
