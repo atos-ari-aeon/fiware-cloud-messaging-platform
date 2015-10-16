@@ -9,7 +9,7 @@ The Cloud Messaging GE provides a Dashboard in which it is possible to manage al
 
 The current document explains both, the usage of the dashboard and the SDK. 
 
-To get a wider information about aeon, please, go to the [README.md](index.md) file.
+To get a wider information about aeon, please, go to the [README.md](index.markdown) file.
 
 ### Using AEON Dashboard
 
