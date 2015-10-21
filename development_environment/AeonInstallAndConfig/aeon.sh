@@ -5,6 +5,9 @@
  # create AEON home
  sudo mkdir -p /home/aeon
  
+ cp -r aeonInstall /home/aeon
+ cp -r aeonConfiguration /home/aeon
+
  cd /home/aeon
  
  echo "************************************************"
