@@ -1,0 +1,5 @@
+development_environment/AeonInstallAndConfig/aeon.tgz
+development_environment/AeonInstallAndConfig/aeonInstall/modules/.project
+development_environment/AeonInstallAndConfig/aeonInstall/modules/aeon_mongodb/.project
+development_environment/AeonInstallAndConfig/aeonInstall/modules/aeon_nodejs/.project
+development_environment/AeonInstallAndConfig/aeonInstall/modules/aeon_rabbitmq/.project
