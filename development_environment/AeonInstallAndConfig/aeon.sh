@@ -7,13 +7,6 @@
  
  cd /home/aeon
  
- echo "*******************************"
- echo "*   Configuring Environment   *"
- echo "*******************************"
- # Install puppet
- sudo apt-get update
- sudo apt-get install puppet git -y
-
  echo "************************************************"
  echo "*   Downloading AEON Cloud Messaging modules   *"
  echo "************************************************"
@@ -24,13 +17,21 @@
  git clone https://github.com/atos-ari-aeon/fiware-cloud-messaging-api.git
  git clone https://github.com/atos-ari-aeon/fiware-cloud-messaging-events-manager.git
  
+
  echo "*******************************"
  echo "*   Configuring Environment   *"
  echo "*******************************"
+ # Install puppet
+ sudo apt-get update
+ sudo apt-get install puppet git -y
 
  # Get the installation and config files
  mv ./fiware-cloud-messaging-platform/development_environment/AeonInstallAndConfig/aeonInstall .
  mv ./fiware-cloud-messaging-platform/development_environment/AeonInstallAndConfig/aeonConfiguration .
+
+ mv fiware-cloud-messaging-dashboard aeon-dashboard
+ mv fiware-cloud-messaging-api aeon-api
+ mv fiware-cloud-messaging-events-manager aeon-events-manager
 
  # install AEON
  sudo puppet apply --modulepath /home/aeon/aeonInstall/modules /home/aeon/aeonInstall/manifests/main.pp
