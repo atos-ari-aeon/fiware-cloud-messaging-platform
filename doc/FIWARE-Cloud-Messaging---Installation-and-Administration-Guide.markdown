@@ -174,7 +174,7 @@ $ ./aeon.sh
 When the script finishes, navigate to the aeonConfiguration folder:
 
 ```bash
-$ cd ./aeonConfiguration
+$ cd /home/aeon/aeonConfiguration
 ```
 
 Once here, it is necessary to configure the puppet files with your external and internal IPs. The files that need to be edited are:
