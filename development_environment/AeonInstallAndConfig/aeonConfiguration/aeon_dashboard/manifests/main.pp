@@ -4,20 +4,20 @@
   $frontend_config_folder = "$aeon_home/aeon-dashboard"
   $frontend_app_folder = "$aeon_home/aeon-dashboard"
   
-  $internalIP = "192.168.33.12" #to be configured as needed
+  $externalIP = "$externalIP" #to be configured as needed
   
   include aeon_conf
   
  
   class frontend{
     class {'::aeon_conf::frontend::frontend_config':
-      aeon_gui_host => "$internalIP",
+      aeon_gui_host => "$externalIP",
       aeon_gui_port=> '8000',
     }
     
     class {'::aeon_conf::frontend::frontend_controller_config':
       recapcha => '6LfpRe4SAAAAAK55U_PfaYxvogR-jHGRMJQp8ArW',
-      rest_host => "$internalIP",
+      rest_host => "$externalIP",
       rest_port => '3000',
     }
   }

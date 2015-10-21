@@ -36,6 +36,16 @@
         ensure => present,
         require => Exec["aptGetUpdate"]
     }
+
+    package { "make":
+        ensure => present,
+        require => Exec["aptGetUpdate"]
+    }
+
+    package { "build-essential":
+        ensure => present,
+        require => Exec["aptGetUpdate"]
+    }
   }
   
   include apt_update

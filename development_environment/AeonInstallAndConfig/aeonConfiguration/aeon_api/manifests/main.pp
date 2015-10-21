@@ -3,9 +3,9 @@
 
 	$rest_config_folder = "$aeon_home/aeon-api/config"
 	$rest_app_folder = "$aeon_home/aeon-api"
-	
-  $internalIP = "192.168.33.12" #to be configured as needed
-  $externalIP = "192.168.33.12" #to be configured as needed
+
+  $internalIP = "$internalIP" #to be configured as needed
+  $externalIP = "$externalIP" #to be configured as needed
   
   $env = 'development'
   include aeon_conf
@@ -32,7 +32,7 @@
       rest_internal_host => "$internalIP",
       rest_internal_port => 3000,
       rest_internal_secret => 'default should be changed',
-      socket_host => "$internalIP",
+      socket_host => "$externalIP",
       socket_port => 7789,
       gui_protocol => 'http',
       gui_host => "$externalIP",

@@ -2,9 +2,11 @@
   $aeon_home="/home/aeon" #to be configured according to installation folder
 
   $events_app_folder = "$aeon_home/aeon-events-manager"
+  $events_manager_config_folder = "$aeon_home/aeon-events-manager/config"
   
-  $internalIP = "$ipaddress" #to be configured as needed
+  $externalIP = "$externalIP" #to be configured as needed
   
+  $env = 'development'
   include aeon_conf
   
   class events_manager{
@@ -12,7 +14,7 @@
     class {'aeon_conf::events_manager::events_manager_brokerconnector':
       rabbit_user =>'guest',
       rabbit_pass =>'guest',
-      rabbit_host =>"$internalIP",
+      rabbit_host =>"$externalIP",
       rabbit_port =>5672,
     }
     
