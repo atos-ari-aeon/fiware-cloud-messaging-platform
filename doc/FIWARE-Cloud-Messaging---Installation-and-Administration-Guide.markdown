@@ -166,13 +166,6 @@ Navigate to the docker folder
 ```bash
 $ cd ./fiware-cloud-messaging-platform/docker
 ```
-Download the Cloud Messaging GE from the repos:
-
-```bash
-$ git clone -b docker https://github.com/atos-ari-aeon/fiware-cloud-messaging-dashboard.git
-$ git clone -b docker https://github.com/atos-ari-aeon/fiware-cloud-messaging-api.git
-$ git clone -b docker https://github.com/atos-ari-aeon/fiware-cloud-messaging-events-manager.git
-```
 
 Edit the docker-compose.yml file. Add your ip in the field "docker_host":
 
@@ -220,6 +213,8 @@ Run the script file:
 ```bash
 $ ./deploy_aeon.sh 
 ```
+
+This script will download the source code from the different repositories and will execute the docker-compose.yml file to run the Cloud Messaging GE.
 
 ## Sanity Check Procedures
 
