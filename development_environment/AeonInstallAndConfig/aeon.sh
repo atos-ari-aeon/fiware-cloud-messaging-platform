@@ -10,6 +10,10 @@
 
  cd /home/aeon
  
+ # Install git & puppet
+ sudo apt-get update
+ sudo apt-get install puppet git -y
+ 
  echo "************************************************"
  echo "*   Downloading AEON Cloud Messaging modules   *"
  echo "************************************************"
@@ -23,9 +27,6 @@
  echo "*******************************"
  echo "*   Configuring Environment   *"
  echo "*******************************"
- # Install puppet
- sudo apt-get update
- sudo apt-get install puppet git -y
 
  mv fiware-cloud-messaging-dashboard aeon-dashboard
  mv fiware-cloud-messaging-api aeon-api
