@@ -1,0 +1,560 @@
+FORMAT: 1A
+HOST: http://aeon.atosresearch.eu
+TITLE: FIWARE-NGSI v2 Specification
+DATE: 30 June 2015
+VERSION: v0.2.2
+PREVIOUS_VERSION: v0.2.2
+APIARY_PROJECT: aeon
+
+
+
+# AEON API
+
+AEON open API allows you to implement your resources management in your own way. This is a key point of AEON, your applications could have flexibility enough, not only to send/receive data, but also to configure your environment in a very dynamic way. For example, a chat application could manage rooms creating and deleting entities and channels regarding the needs.
+
+If you are a developer, this should be your section. Here you will find a detailed description of the REST API for resources managment and pub/sub functionality.
+
+## Editors
++ José Gato Luis
++ Javier García Hernández
++ Elisa Herrmann 
+
+## Copyright
+Due the interoperability needs of these architectures, AEON has been fully designed considering Free Libre Open Source Software technologies. The project has been designed and implemented by the “Transport and Trade Logistics Sector in the Research & Innovation department in ATOS Spain”.
+AEON Platform is released as Open Source.
+
+The license for the different modules of the Cloud Messaging GE implementation (AEON) are: 
+
++ Dashboard: GPL v3
++ CORE: AGPL v3
++ SDK: Apache 2.0
+
+© ATOS S.A. 2014
+
+The Cloud Messaging GE specification is licensed under the FIWARE Open specification license (http://forge.fiware.org/plugins/mediawiki/wiki/fiware/index.php/FI-WARE_Open_Specification_Legal_Notice_%28essential_patents_license%29)
+
+## Status
+The AEON platform is under constant development. We are working to improve the capabilities offered by it.
+
+## Acknoledgements
+
+Thanks to all the AEON team (Jose, Elisa, Gonzalo, Germán and myself) that makes this possible. 
+
+### User operations
+
+Documentation for user’s management. Most of the AEON’s functionalities requires registered users. This registered users will make use of the AEON’s functionality to create entities and channels.
+
++ /login
++ /logout
++ /users
++ /users/user 
++ /users/{user_id}
++ /users/{user_id}/updatePassword
++ /users/{user_id}/rememberPassword
++ /users/{user_id}/rememberPassword/{code}
+
+### Entities operations
+
+Documentation for entity’s management. AEON entities are the basic resource to organize your different communication channels. An entity could mean whatever you want, a truck, a box of fish, a chat application, a chat room, your personal mobile, whatever.. By the moment, entities contains just a little description.
+
+Only users can create new entities, and these entities will contain the different channels.
+
+
++ /entities
++ /entities/{entity_id}
+
+### Channels operations
+
+AEON channels are the most valuable resource, actually, you are here because you want communication channels. A channel is a communication resource allowing publication an subscription mechanisms.
+
+Channels need to be organized into an existing entity and contains:
+- A little description
+- The pub/sub urls
+- A list of allowed subscribers
+
+Operations to work with channels are:
+
++ /entities/{entity_id}/channels
++ /entities/{entity_id}/channels/{channel_id}
+
+
+## Login [/login]
+
+# Login [POST]
+
+Logging process with an existing user and password (POST /users/) . If the process results “ok” you will receive a cookie with your session. This cookie will be used in most of the operations.
+
++ Request (application/json)
+   
+        {
+          "username": "john",
+          "password": "john",
+          "type": "user"
+        }
+
++ Response 200 (application/json)
+
+        {
+          "code": 200,
+          "desc": "ok"
+        }
+        
+## Logout [/logout]
+
+# Logout [GET]
+
+Logout process. The user set in the cookie will be unset from it. The cookie won’t be deleted from the server.
+
++ Response 200 (application/json)
+
+        {
+          "code": 200,
+          "desc": "ok"
+        }
+     
+## Users [/users]
+
+# List All Users [GET]
+
+Get list of registered users. Just basic information. Preconditions:
++ You need to be logged: (Login)
+
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "desc": "ok"
+            "result":
+                [
+                    {
+                        "username": "john",
+                        "type": "user",
+                        "_id": "john"
+                    },
+                    {
+                        "username": "jammes",
+                        "type": "user",
+                        "_id": "jammes"
+                    }
+                ]
+        }    
+
+# Create User [POST]
+
+Create/Register a new user into the system. By the moment, it only includes information about user and password.
+
++ Request (application/json)
+       
+        {
+            "username": "john",
+            "password": "john",
+            "type": "user",
+            "_id": "john"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "desc": "ok"
+            "result":
+                [
+                    {
+                        "username": "john",
+                        "password": "john",
+                        "type": "user",
+                        "_id": "john"
+                    }
+                ]
+        }
+        
+## User info [/users/user]
+
+# User info [GET]
+
+Retrieves the information related to the user identified in the cookie.
+
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "desc": "ok",
+            "result": [
+                {
+                    "_id": "userID",
+                    "type": "user",
+                    "username": "username"
+                }
+            ]
+        }
+        
+## User Collection [/users/{user_id}]
+
++ Parameters: 
+    + user_id - User id
+
+# Get user[GET]
+
+Get complete information of an specific user. Preconditions:
++ In order to get extra information of an existing user you need to be logged
++ You need to be logged as (user_id): (Login)
+
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "desc": "ok",
+            "result": [
+                {
+                    "_id": "userID",
+                    "type": "user",
+                    "username": "username"
+                }
+            ]
+        }
+# Delete User [DELETE]
+
+Delete an specific user. When a user is deleted, all the entities and the information assigned will be deleted too. Preconditions:
++ In order to delete an existing user you need to be logged
++ You need to be logged as (user_id): (Login)
+
++ Response 200 (application/json)
+
+        {
+          "code": 200,
+          "desc": "ok",
+        }
+
+
+## Update User [/users/{user_id}/updatePassword]
+
++ Parameters: 
+    + user_id - User id
+
+# Update User Password [PUT]
+        
+Change the user password.
+
++ Response 200 (application/json)
+        
+        {
+            "code": 200,
+            "desc": "ok",
+            "result": [
+            ]
+        }
+
+## Update User [/users/{user_id}/rememberPassword]
+
+This function is in charge of helping to remember a forgotten or missed password. Mainly, an existing user id will be requested (users are registered with emails). Thus, the user will receive an email with extra information in his email address. The extra information contains a temporal code used to reset the password with (Reset the user’s password).
+Generate a temporal code to change the user’s password. (user_id) is the email of an existing user. Through this email he will receive the necessary information to (Reset the user’s password).
+
++ Parameters: 
+    + user_id - User id
+
+# Remember User Password [GET]
+
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "desc": "ok",
+            "result": 
+                [
+                    "You will receive an email with information for reset."
+                ]
+        }
+
+## Verify User Password [/users/{user_id}/rememberPassword/{code}]
+
+This function is in charge of resetting a forgotten or missed password. The user needs to provide an existing user id (users are registered with emails), the new password and a temporal code generated by (Remember the user’s password).
+Changes user’s password of (user_id) using the retrieved (code) by (Remember the user’s password).
+
++ Parameters: 
+    + user_id - User id
+    + code - Verfication code sent to the user by email 
+
+# Reset User Password [PUT]
+
++ Request (application/json)
+
+        {
+             "password": "newPassword",
+             "type": "user"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "desc": "ok",
+            "result": [
+            ]
+        }
+
+
+## Entities [/entities]
+# Get all entities [GET]
+
+Get list of entities owned by the logged user. Preconditions:
+
++ You need to be logged: (Login)
+
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "desc": "ok"
+            "result":
+            [
+                {
+        
+                    "_id": "entityid",
+                    "channels": [ … ],
+                    "entitydescription": "entitydescription",
+                    "entityname": "entityname",
+                    "owner": "userid",
+                    "type": "entity"
+        
+                },
+            ...
+            ]
+        }
+
+# Create entity [POST]
+
+Create a new entity into the system. By the moment, entities only contains information about description and a list of channels. Some preconditions: 
++ You need to be logged: (Login)
+
+The entity will be created and owned by the logged user.
+
++ Request (application/json)
+
+        {
+          "entityname": "entityname",
+          "entitydescription": "entitydescription",
+          "type": "entity",
+        }
+
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "desc": "ok"
+            "result":
+                [
+                    {
+                        "entityname": "entityname",
+                        "entitydescription": "entitydescription",
+                        "type": "entity",
+                        "owner": "userid",
+                        "channels": ["channelname"]
+                    }
+                ]
+        }
+
+## Entities Collection [/entities/{entity_id}]
+
++ Parameters:
+    + entity_id - Entity Id
+
+# Entity Info [GET]
+
+Get complete information of an specific entity. Preconditions:
++ In order to get extra information of an existing entity you need to be logged
++ You need to be logged (Login) as the owner of (entity_id):
+
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "desc": "ok"
+            "result":
+            [
+                {
+        
+                    "_id": "entityid",
+                    "channels": [ … ],
+                    "entitydescription": "entitydescription",
+                    "entityname": "entityname",
+                    "owner": "userid",
+                    "type": "entity"
+        
+                },
+            ]
+        }
+
+# Update Entity [PUT]
+
+Update the name or the description of an entity. Preconditions:
++ In order to delete an existing user you need to be logged
++ You need to be logged as the owner of the entity: (Login)
+
++ Request (application/json)
+
+        {
+          "entityname": "entityname modified",
+          "entitydescription": "entity description modified",
+          "type": "entity"
+        }
+        
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "desc": "ok",
+            "result": [
+            ]
+        }
+
+# Delete Entity [DELETE]
+
+Delete an specific entity. When an entity is deleted, the channels that belongs to it will be deleted too. Preconditions:
++ In order to delete an existing entity you need to be logged
++ You need to be logged as the owner of the entity: (Login)
+
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "desc": "ok",
+            "result": [
+            ]
+        }
+        
+## Channels [/entities/{entity_id}/channels]
+
++ Parameters:
+    + entity_id: Entity Id
+
+# Get channels [GET]
+
+Get the list of channels of an specific entity. Preconditions:
+
++ You need to be logged: (Login)
++ You need to be logged as the owner of the (entity_id)
+
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "desc": "ok"
+            "result":
+            [
+                {
+                    "_id": "51e7be461fb1a1f179000002",
+                    "channelName": "channelname",
+                    "channeldesc": "channeldesc",
+                    "pubID": "4ca05d1f-ff02-481d-a1db-9d69c6bfff73",
+                    "subID": "d203158e-bac8-49ee-b2d3-1fd82729fa09"
+                },
+                ...
+            ]
+        }
+
+# Create channel [POST]
+
+Create a new channel into the specific entity. Channels contains information about description and the pub/sub mechanisms. Some preconditions: - You need to be logged: (Login) - You need to be logged as the owner of the (entity_id) where your are requesting a new channel
+
+The channel will be attached to the entity, together with Pub_Url and a (Sub_Url).
+
++ Request (application/json)
+
+        {
+            "channelName": "channelname",
+            "channeldesc": "channeldesc",
+            "type": "channel"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "desc": "ok"
+        }
+
+## Channels Collection [/entities/{entity_id}/channels/{channel_id}]
+
++ Parameters:
+    + entity_id - Entity Id
+    + channel_id - Channel Id
+
+# Channel Info [GET]
+
+Get complete information of an specific channel. Preconditions:
++ You need to be logged: (Login)
++ You need to be logged as the owner of the (entity_id)
++ (channel_id) has to be attached to the list of channels of (entity_id)
+
+
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "desc": "ok"
+            "result":
+                [
+                    {
+                    "_id": "51e7be461fb1a1f179000002",
+                    "channelName": "channelname",
+                    "channeldesc": "channeldesc",
+                    "pubID": "4ca05d1f-ff02-481d-a1db-9d69c6bfff73",
+                    "subID": "d203158e-bac8-49ee-b2d3-1fd82729fa09",
+                    "puburl": "http://130.206.81.70:3000/publish/4ca05d1f-ff02-481d-a1db-9d69c6bfff73",
+                    "subscriptionsurl": "http://130.206.81.70:3000/subscribe/d203158e-bac8-49ee-b2d3-1fd82729fa09",
+                    "subscriptions": 
+                        [
+                            {
+                                _id: "53bfe41faf5e6e0200000016",
+                                desc: "demo-sub",
+                                id: "demo-sub",
+                                ip: "http://130.206.81.70:3000",
+                                subkey: "Delivery Item 1-10925842-queu"
+                            },
+                            ...
+                        ]
+                    }
+                ]
+        }
+
+# Update Channel [PUT]
+
+Updates the information of an specific channel. Preconditions:
++ You need to be logged: (Login)
++ You need to be logged as the owner of the (entity_id)
++ (channel_id) has to be attached to the list of channels of (entity_id)
+
++ Request (application/json)
+
+        {
+            "channelName": "new channelname",
+            "channeldesc": "new channeldesc",
+            "type": "channel"
+        }
+        
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "desc": "ok",
+            "result": [
+            ]
+        }
+
+# Delete Channel [DELETE]
+
+Delete an specific channel. Preconditions:
++ You need to be logged: (Login)
++ You need to be logged as the owner of the (entity_id)
++ (channel_id) has to be attached to the list of channels of (entity_id)
+
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "desc": "ok",
+            "result": [
+            ]
+        }
+        
+
