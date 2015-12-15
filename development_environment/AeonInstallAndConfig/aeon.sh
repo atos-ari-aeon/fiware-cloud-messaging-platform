@@ -1,15 +1,19 @@
-#!/bin/bash 
+#!/bin/bash
 
  export DEBIAN_FRONTEND=noninteractive
 
+ # Install puppet
+ sudo apt-get update
+ sudo apt-get install puppet git -y
+
  # create AEON home
  sudo mkdir -p /home/aeon
- 
+
  cp -r aeonInstall /home/aeon
  cp -r aeonConfiguration /home/aeon
 
  cd /home/aeon
- 
+
  echo "************************************************"
  echo "*   Downloading AEON Cloud Messaging modules   *"
  echo "************************************************"
@@ -18,14 +22,11 @@
  git clone https://github.com/atos-ari-aeon/fiware-cloud-messaging-dashboard.git
  git clone https://github.com/atos-ari-aeon/fiware-cloud-messaging-api.git
  git clone https://github.com/atos-ari-aeon/fiware-cloud-messaging-events-manager.git
- 
+
 
  echo "*******************************"
  echo "*   Configuring Environment   *"
  echo "*******************************"
- # Install puppet
- sudo apt-get update
- sudo apt-get install puppet git -y
 
  mv fiware-cloud-messaging-dashboard aeon-dashboard
  mv fiware-cloud-messaging-api aeon-api
