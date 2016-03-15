@@ -2,7 +2,7 @@
 
  export DEBIAN_FRONTEND=noninteractive
 
- # Install puppet
+ # Install git & puppet
  sudo apt-get update
  sudo apt-get install puppet git -y
 
