@@ -1,0 +1,14 @@
+site_name: Fiware-Cloud-Messaging
+site_url: https://aeon-platform.readthedocs.org
+repo_url: https://github.com/atos-ari-aeon/fiware-cloud-messaging-platform
+site_description: AEON Cloud Messaging Documentation
+docs_dir: doc
+site_dir: html
+markdown_extensions: [toc,fenced_code]
+use_directory_urls: false
+theme: readthedocs
+extra_css: ["https://fiware.org/style/fiware_readthedocs.css"]
+pages:
+  - Home: index.markdown
+  - 'User & Programmers Manual': 'FIWARE-Cloud-Messaging---User-and-Programmers-Guide.markdown'
+  - 'Installation & Administration Manual': 'FIWARE-Cloud-Messaging---Installation-and-Administration-Guide.markdown'    
