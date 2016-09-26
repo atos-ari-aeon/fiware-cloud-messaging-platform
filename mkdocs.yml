@@ -1,6 +1,7 @@
 site_name: Fiware-Cloud-Messaging 
 site_url: https://aeon-platform.readthedocs.org
 repo_url: https://github.com/atos-ari-aeon/fiware-cloud-messaging-platform
+google_analytics: ['UA-84742787-1', 'aeon-platform.readthedocs.io']
 site_description: AEON Cloud Messaging Documentation
 docs_dir: doc
 site_dir: html
